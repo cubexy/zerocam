@@ -2,8 +2,6 @@ import LCD_Config
 import LCD_1in44
 from var import *
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 setup_gpio()
 
 disp = LCD_1in44.LCD()
@@ -74,17 +72,5 @@ def button_test(w,h):
         else:  # button is pressed:
             draw.ellipse((70, 40, 90, 60), outline=255, fill=0)  # A button filled
         disp.LCD_ShowImage(image, 0, 0)
-=======
-=======
->>>>>>> parent of 65a0611... Test code
-import RPi.GPIO as GPIO
 
-import time
-from PIL import Image,ImageDraw,ImageFont,ImageColor
-
-
-
-<<<<<<< HEAD
->>>>>>> parent of 65a0611... Test code
-=======
->>>>>>> parent of 65a0611... Test code
+button_test(width,height)
