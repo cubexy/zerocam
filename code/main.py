@@ -4,12 +4,14 @@ from var import *
 import RPi.GPIO as GPIO
 from picamera import PiCamera
 from time import sleep
+from io import BytesIO
 
 import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 
 setup_gpio()
 camera = PiCamera()
+stream = BytesIO()
 camera.resolution=(128,128)
 camera.start_preview()
 
@@ -89,9 +91,12 @@ try:
     #button_test(width,height)
     baum = False
     while baum == False:
-        if GPIO.input(KEY1_PIN) != 0:  # button is pressed
+        if GPIO.input(KEY1_PIN) == 0:  # button is pressed
             print("BUT1 pressed")
-            camera.capture('foo.jpg')
+            camera.capture(stream, format='jpeg')
+            stream.seek(0)
+            image = Image.open(stream)
+            disp.LCD_ShowImage(image, 0, 0)
             baum = True
 
 except KeyboardInterrupt:
