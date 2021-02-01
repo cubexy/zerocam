@@ -11,9 +11,8 @@ disp.LCD_Clear()
 
 width = 128
 height = 128
-image = Image.new('RGB', (width, height))
 
-def button_test(w,h):
+def button_test(width,height):
     image = Image.new('RGB', (width, height))
     # Get drawing object to draw on image.
     draw = ImageDraw.Draw(image)
