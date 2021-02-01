@@ -77,4 +77,5 @@ def button_test(w,h):
                 draw.ellipse((70, 40, 90, 60), outline=255, fill=0)  # A button filled
             disp.LCD_ShowImage(image, 0, 0)
     except KeyboardInterrupt:
-        raise Exception
+        print("Exiting.")
+        disp.LCD_Clear()
