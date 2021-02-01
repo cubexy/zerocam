@@ -89,7 +89,7 @@ try:
     #button_test(width,height)
     baum = False
     while baum == False:
-        if GPIO.input(KEY1_PIN) == 1:  # button is released
+        if GPIO.input(KEY1_PIN) != 0:  # button is pressed
             print("BUT1 pressed")
             camera.capture('foo.jpg')
             baum = True
