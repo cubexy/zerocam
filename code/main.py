@@ -76,4 +76,7 @@ def button_test(width,height):
             draw.ellipse((70, 40, 90, 60), outline=255, fill=0)  # A button filled
         disp.LCD_ShowImage(image, 0, 0)
 
-button_test(width,height)
+try:
+    button_test(width,height)
+except KeyboardInterrupt:
+    print("Ended Program")
