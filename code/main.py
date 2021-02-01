@@ -2,11 +2,16 @@ import LCD_Config
 import LCD_1in44
 from var import *
 import RPi.GPIO as GPIO
+from picamera import PiCamera
+from time import sleep
 
 import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 
 setup_gpio()
+camera = PiCamera()
+camera.resolution=(1280,720)
+camera.start_preview()
 
 disp = LCD_1in44.LCD()
 LCD_ScanDir = LCD_1in44.SCAN_DIR_DFT
@@ -15,6 +20,10 @@ disp.LCD_Clear()
 
 width = 128
 height = 128
+
+print("Activating camera")
+sleep(2)
+print("Sleep time exited")
 
 def button_test(width,height):
     image = Image.new('RGB', (width, height))
@@ -77,6 +86,13 @@ def button_test(width,height):
         disp.LCD_ShowImage(image, 0, 0)
 
 try:
-    button_test(width,height)
+    #button_test(width,height)
+    baum = False
+    while baum == False:
+        if GPIO.input(KEY1_PIN) == 1:  # button is released
+            print("BUT1 pressed")
+            camera.capture('foo.jpg')
+            baum = True
+
 except KeyboardInterrupt:
     print("Ended Program")
