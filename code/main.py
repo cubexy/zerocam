@@ -10,7 +10,7 @@ from PIL import Image,ImageDraw,ImageFont,ImageColor
 
 setup_gpio()
 camera = PiCamera()
-camera.resolution=(1280,720)
+camera.resolution=(128,128)
 camera.start_preview()
 
 disp = LCD_1in44.LCD()
