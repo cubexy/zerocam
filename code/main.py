@@ -149,7 +149,7 @@ def mode_camera():
             stream.seek(0)
             img = Image.open(stream)
             disp.LCD_ShowImage(img, 0, 0)
-            sleep(1)
+            sleep(1.5)
             stream.flush()
             stream.close()
             disp.LCD_ShowImage(image_c, 0, 0)
