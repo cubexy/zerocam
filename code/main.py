@@ -98,6 +98,7 @@ try:
             image = Image.open(stream)
             disp.LCD_ShowImage(image, 0, 0)
             sleep(0.5)
+        
 
 except KeyboardInterrupt:
     print("Ended Program")
