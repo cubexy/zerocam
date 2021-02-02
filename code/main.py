@@ -92,13 +92,14 @@ try:
     while baum == False:
         if GPIO.input(KEY1_PIN) == 0:  # button is pressed
             stream = BytesIO()
+            img = Image.new('RGB', (128, 128))
             print("BUT1 pressed")
             disp.LCD_Clear()
             camera.capture(stream, format='jpeg')
             stream.seek(0)
-            image = Image.open(stream)
-            disp.LCD_ShowImage(image, 0, 0)
-            sleep(0.5)
+            img = Image.open(stream)
+            disp.LCD_ShowImage(img, 0, 0)
+            sleep(0.2)
 
 except KeyboardInterrupt:
     print("Ended Program")
