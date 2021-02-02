@@ -11,7 +11,6 @@ from PIL import Image,ImageDraw,ImageFont,ImageColor
 
 setup_gpio()
 camera = PiCamera()
-stream = BytesIO()
 camera.resolution=(128,128)
 camera.start_preview()
 
@@ -92,7 +91,7 @@ try:
     baum = False
     while baum == False:
         if GPIO.input(KEY1_PIN) == 0:  # button is pressed
-            stream.flush()
+            stream = BytesIO()
             print("BUT1 pressed")
             disp.LCD_Clear()
             camera.capture(stream, format='jpeg')
