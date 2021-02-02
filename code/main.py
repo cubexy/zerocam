@@ -139,10 +139,8 @@ def mode_camera():
     image_c = Image.open("splashscreen_camera.jpg")
     draw = ImageDraw.Draw(image_c)
     disp.LCD_ShowImage(image_c, 0, 0)
-
-
     back=False
-    while back=False:
+    while back==False:
         if GPIO.input(KEY1_PIN) == 0:  # button is pressed
             stream = BytesIO()
             # print("BUT1 pressed")
@@ -151,9 +149,10 @@ def mode_camera():
             stream.seek(0)
             img = Image.open(stream)
             disp.LCD_ShowImage(img, 0, 0)
-            sleep(0.3)
+            sleep(1)
             stream.flush()
             stream.close()
+            disp.LCD_ShowImage(image_c, 0, 0)
 
 def mode_webinterface():
     print("WIP")
