@@ -31,6 +31,8 @@ def show_menu(width,height):
     draw = ImageDraw.Draw(image)
     draw.rectangle((9, 59, 56, 106), outline=0, fill=(255,255,255))
     draw.rectangle((71, 59, 119, 106), outline=0, fill=(255,255,255))
+    draw.multiline_text((10, 10), "Photo\nMode", fill=(0, 0, 0))
+    draw.multiline_text((50, 50), "Webcam\nMode", fill=(0, 0, 0))
     disp.LCD_ShowImage(image , 0, 0)
     selector=-1
     selected=False
@@ -62,7 +64,7 @@ def show_menu(width,height):
 
 
 
-def button_test(width,height):
+def mode_test(width,height):
     image = Image.new('RGB', (width, height))
     # Get drawing object to draw on image.
     draw = ImageDraw.Draw(image)
@@ -124,29 +126,27 @@ def button_test(width,height):
         disp.LCD_ShowImage(image, 0, 0)
 
 def mode_camera():
-    try:
-        #button_test(width,height)
-        baum = False
-        while baum == False:
-            if GPIO.input(KEY1_PIN) == 0:  # button is pressed
-                stream = BytesIO()
-                # print("BUT1 pressed")
-                # disp.LCD_Clear()
-                camera.capture(stream, format='jpeg')
-                stream.seek(0)
-                img = Image.open(stream)
-                disp.LCD_ShowImage(img, 0, 0)
-                sleep(0.3)
-                stream.flush()
-                stream.close()
-
-    except KeyboardInterrupt:
-        print("Ended Program")
-        disp.LCD_Clear()
-        camera.close()
+    # button_test(width,height)
+    baum = False
+    while baum == False:
+        if GPIO.input(KEY1_PIN) == 0:  # button is pressed
+            stream = BytesIO()
+            # print("BUT1 pressed")
+            # disp.LCD_Clear()
+            camera.capture(stream, format='jpeg')
+            stream.seek(0)
+            img = Image.open(stream)
+            disp.LCD_ShowImage(img, 0, 0)
+            sleep(0.3)
+            stream.flush()
+            stream.close()
 
 def mode_webinterface():
     print("WIP")
 
-
-show_menu(128,128)
+try:
+    show_menu(128,128)
+except KeyboardInterrupt:
+    print("Ended Program")
+    disp.LCD_Clear()
+    camera.close()
