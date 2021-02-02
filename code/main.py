@@ -30,8 +30,8 @@ def show_menu(width,height):
     image = Image.new('RGB', (width, height))
     draw = ImageDraw.Draw(image)
     draw.rectangle((0, 0, width, height), outline=0, fill=(255,255,255))
-    draw.rectangle((11, 30, 48, 68), outline=0, fill=(26,39,68))
-    draw.rectangle((69, 30, 48, 68), outline=0, fill=(26,39,68))
+    draw.rectangle((11, 30, 58, 97), outline=0, fill=(26,39,68))
+    draw.rectangle((69, 30, 116, 97), outline=0, fill=(26,39,68))
     disp.LCD_ShowImage(image , 0, 0)
 
 def button_test(width,height):
