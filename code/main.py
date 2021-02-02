@@ -100,8 +100,9 @@ try:
             img = Image.open(stream)
             disp.LCD_ShowImage(img, 0, 0)
             #sleep(0.1)
-            print("Shutter speed: " + str(camera.shutter_speed))
+            print("Shutter speed: " + str(camera.exposure_speed))
 
 except KeyboardInterrupt:
     print("Ended Program")
     disp.LCD_Clear()
+    camera.close()
