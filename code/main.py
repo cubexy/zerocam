@@ -31,7 +31,7 @@ def show_menu(width,height):
     draw = ImageDraw.Draw(image)
     draw.rectangle((9, 59, 56, 106), outline=0, fill=(255,255,255))
     draw.rectangle((71, 59, 119, 106), outline=0, fill=(255,255,255))
-    draw.multiline_text((10, 10), "Photo\nMode", fill=(0, 0, 0))
+    draw.multiline_text((20, 20), "Photo\nMode", fill=(0, 0, 0), )
     draw.multiline_text((50, 50), "Webcam\nMode", fill=(0, 0, 0))
     disp.LCD_ShowImage(image , 0, 0)
     selector=-1
@@ -147,6 +147,6 @@ def mode_webinterface():
 try:
     show_menu(128,128)
 except KeyboardInterrupt:
-    print("Ended Program")
+    print("\nEnded Program")
     disp.LCD_Clear()
     camera.close()
