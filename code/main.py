@@ -98,6 +98,7 @@ try:
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
+            stream.close()
             disp.LCD_ShowImage(img, 0, 0)
             #sleep(0.1)
             print("Shutter speed: " + str(camera.exposure_speed))
@@ -105,3 +106,4 @@ try:
 except KeyboardInterrupt:
     print("Ended Program")
     disp.LCD_Clear()
+    camera.close()
