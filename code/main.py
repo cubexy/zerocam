@@ -29,8 +29,8 @@ print("Sleep time exited")
 def show_menu(width,height):
     image = Image.open("splashscreen.jpg")
     draw = ImageDraw.Draw(image)
-    draw.rectangle((9, 59, 56, 106), outline=0, fill=(255,255,255))
-    draw.rectangle((71, 59, 119, 106), outline=0, fill=(255,255,255))
+    draw.rectangle((9, 59, 56, 106), outline=0, fill=(96,96,96))
+    draw.rectangle((71, 59, 119, 106), outline=0, fill=(96,96,96))
     draw.multiline_text((20, 70), "Photo\nMode", fill=(0, 0, 0), )
     draw.multiline_text((50, 50), "Webcam\nMode", fill=(0, 0, 0))
     disp.LCD_ShowImage(image , 0, 0)
@@ -39,14 +39,14 @@ def show_menu(width,height):
     while selected == False:
         if GPIO.input(KEY_LEFT_PIN) == 0:
             # If LEFT input pressed:
-            draw.rectangle((71, 59, 119, 106), outline=0, fill=(255, 255, 255))
+            draw.rectangle((71, 59, 119, 106), outline=0, fill=(96, 96, 96))
             draw.rectangle((9, 59, 56, 106), outline=0, fill=(58, 176, 255))
             selector = 0
             disp.LCD_ShowImage(image, 0, 0)
             sleep(0.2)
         if GPIO.input(KEY_RIGHT_PIN) == 0:
             # If RIGHT input pressed:
-            draw.rectangle((9, 59, 56, 106), outline=0, fill=(255, 255, 255))
+            draw.rectangle((9, 59, 56, 106), outline=0, fill=(96, 96, 96))
             draw.rectangle((71, 59, 119, 106), outline=0, fill=(58, 176, 255))
             selector = 1
             disp.LCD_ShowImage(image, 0, 0)
