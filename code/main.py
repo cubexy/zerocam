@@ -94,7 +94,7 @@ try:
             stream = BytesIO()
             img = Image.new('RGB', (128, 128))
             print("BUT1 pressed")
-            disp.LCD_Clear()
+            # disp.LCD_Clear()
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
@@ -103,3 +103,4 @@ try:
 
 except KeyboardInterrupt:
     print("Ended Program")
+    disp.LCD_Clear()
