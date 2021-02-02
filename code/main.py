@@ -92,6 +92,7 @@ try:
     baum = False
     while baum == False:
         if GPIO.input(KEY1_PIN) == 0:  # button is pressed
+            stream.flush()
             print("BUT1 pressed")
             disp.LCD_Clear()
             camera.capture(stream, format='jpeg')
