@@ -41,6 +41,8 @@ def show_menu(width,height):
             # If LEFT input pressed:
             draw.rectangle((71, 59, 119, 106), outline=0, fill=(96, 96, 96))
             draw.rectangle((9, 59, 56, 106), outline=0, fill=(58, 176, 255))
+            draw.multiline_text((19, 70), "Photo\nMode", fill=(255, 255, 255), align="center")
+            draw.multiline_text((78, 70), "Webcam\nMode", fill=(255, 255, 255), align="center")
             selector = 0
             disp.LCD_ShowImage(image, 0, 0)
             sleep(0.2)
@@ -48,6 +50,8 @@ def show_menu(width,height):
             # If RIGHT input pressed:
             draw.rectangle((9, 59, 56, 106), outline=0, fill=(96, 96, 96))
             draw.rectangle((71, 59, 119, 106), outline=0, fill=(58, 176, 255))
+            draw.multiline_text((19, 70), "Photo\nMode", fill=(255, 255, 255), align="center")
+            draw.multiline_text((78, 70), "Webcam\nMode", fill=(255, 255, 255), align="center")
             selector = 1
             disp.LCD_ShowImage(image, 0, 0)
             sleep(0.2)
