@@ -92,15 +92,17 @@ try:
     while baum == False:
         if GPIO.input(KEY1_PIN) == 0:  # button is pressed
             stream = BytesIO()
-            img = Image.new('RGB', (128, 128))
+            #img = Image.new('RGB', (128, 128))
             # print("BUT1 pressed")
             # disp.LCD_Clear()
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
             disp.LCD_ShowImage(img, 0, 0)
+
             sleep(0.3)
             print("Shutter speed: " + str(camera.exposure_speed))
+            stream.flush()
             stream.close()
 
 except KeyboardInterrupt:
