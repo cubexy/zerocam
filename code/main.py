@@ -105,4 +105,3 @@ try:
 except KeyboardInterrupt:
     print("Ended Program")
     disp.LCD_Clear()
-    camera.close()
