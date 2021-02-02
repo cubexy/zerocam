@@ -61,10 +61,12 @@ def show_menu(width,height):
                 draw.rectangle((9, 59, 56, 106), outline=0, fill=(0, 0, 0))
                 disp.LCD_ShowImage(image, 0, 0)
                 sleep(0.2)
+                return "PHOTO_MODE"
             elif selector == 1:
                 draw.rectangle((71, 59, 119, 106), outline=0, fill=(0, 0, 0))
                 disp.LCD_ShowImage(image, 0, 0)
                 sleep(0.2)
+                return "WEBCAM_MODE"
 
 
 
@@ -149,7 +151,11 @@ def mode_webinterface():
     print("WIP")
 
 try:
-    show_menu(128,128)
+    m = show_menu(128,128)
+    if m == "WEBCAM_MODE":
+        mode_camera()
+    elif m == "PHOTO_MODE":
+        mode_webinterface()
 except KeyboardInterrupt:
     print("\nEnded Program")
     disp.LCD_Clear()
