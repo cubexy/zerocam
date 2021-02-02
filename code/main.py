@@ -155,9 +155,9 @@ def mode_webinterface():
 
 try:
     m = show_menu(128,128)
-    if m == "WEBCAM_MODE":
+    if m == "PHOTO_MODE":
         mode_camera()
-    elif m == "PHOTO_MODE":
+    elif m == "WEBCAM_MODE":
         mode_webinterface()
 except KeyboardInterrupt:
     print("\nEnded Program")
