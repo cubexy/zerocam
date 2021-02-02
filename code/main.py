@@ -9,6 +9,8 @@ from io import BytesIO
 import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 
+version = "v.0.1"
+
 setup_gpio()
 camera = PiCamera()
 camera.resolution=(128,128)
@@ -33,6 +35,7 @@ def show_menu(width,height):
     draw.rectangle((71, 59, 119, 106), outline=0, fill=(96,96,96))
     draw.multiline_text((19, 70), "Photo\nMode", fill=(255, 255, 255), align="center")
     draw.multiline_text((78, 70), "Webcam\nMode", fill=(255, 255, 255), align="center")
+    draw.text((5,5), version, fill=(255,255,255))
     disp.LCD_ShowImage(image , 0, 0)
     selector=-1
     selected=False
