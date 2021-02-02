@@ -90,7 +90,7 @@ try:
     #button_test(width,height)
     baum = False
     while baum == False:
-        if GPIO.input(KEY1_PIN) == 0:  # button is pressed
+        if GPIO.input(KEY1_PIN) != 0:  # button is pressed
             stream = BytesIO()
             img = Image.new('RGB', (128, 128))
             print("BUT1 pressed")
@@ -99,7 +99,7 @@ try:
             stream.seek(0)
             img = Image.open(stream)
             disp.LCD_ShowImage(img, 0, 0)
-            sleep(0.2)
+            #sleep(0.1)
 
 except KeyboardInterrupt:
     print("Ended Program")
