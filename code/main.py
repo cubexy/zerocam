@@ -31,8 +31,8 @@ def show_menu(width,height):
     draw = ImageDraw.Draw(image)
     draw.rectangle((9, 59, 56, 106), outline=0, fill=(96,96,96))
     draw.rectangle((71, 59, 119, 106), outline=0, fill=(96,96,96))
-    draw.multiline_text((20, 70), "Photo\nMode", fill=(0, 0, 0), )
-    draw.multiline_text((80, 70), "Webcam\nMode", fill=(0, 0, 0))
+    draw.multiline_text((20, 70), "Photo\nMode", fill=(255, 255, 255), align="center")
+    draw.multiline_text((80, 70), "Webcam\nMode", fill=(255, 255, 255), align="center")
     disp.LCD_ShowImage(image , 0, 0)
     selector=-1
     selected=False
