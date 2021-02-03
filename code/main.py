@@ -145,16 +145,15 @@ def mode_camera():
             stream.seek(0)
             img = Image.open(stream)
             print("Opening stream")
-            img = img.transpose(Image.FLIP_TOP_BOTTOM)
-            img = img.transpose(Image.FLIP_LEFT_RIGHT)
+            img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
             print("Transposed image")
             img.save("test.jpg")
             print("Saved image")
-            img_thumb = img.crop((400,0,1600,2000))
+            #img_thumb = img.crop((400,0,1600,2000))
             print("Cropped thumbnail")
-            img_thumb = img_thumb.resize((128,128))
+            #img_thumb = img_thumb.resize((128,128))
             print("Resized thumbnail")
-            disp.LCD_ShowImage(img_thumb, 0, 0)
+            #disp.LCD_ShowImage(img_thumb, 0, 0)
             print("Showing thumbnail")
             sleep(1.5)
             stream.flush()
@@ -164,13 +163,13 @@ def mode_camera():
 def mode_webinterface():
     print("WIP")
 
-#try:
-m = show_menu(128,128)
-if m == "PHOTO_MODE":
-    mode_camera()
-elif m == "WEBCAM_MODE":
-    mode_webinterface()
-#except KeyboardInterrupt:
-#    print("\nEnded Program")
-#    disp.LCD_Clear()
-#    camera.close()
+try:
+    m = show_menu(128,128)
+    if m == "PHOTO_MODE":
+        mode_camera()
+    elif m == "WEBCAM_MODE":
+        mode_webinterface()
+except KeyboardInterrupt:
+    print("\nEnded Program")
+    disp.LCD_Clear()
+    camera.close()
