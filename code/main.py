@@ -133,9 +133,6 @@ def mode_test(width,height):
             draw.ellipse((70, 40, 90, 60), outline=255, fill=0)  # A button filled
         disp.LCD_ShowImage(image, 0, 0)
 
-def save_img(image)
-
-
 def mode_camera():
     # button_test(width,height)
     image_c = Image.open("splashscreen_camera.jpg")
