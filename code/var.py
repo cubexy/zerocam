@@ -11,7 +11,7 @@ KEY3_PIN = 16
 
 def setup_gpio():
     GPIO.setmode(GPIO.BCM)
-    GPIO.cleanup()
+    #GPIO.cleanup()
     GPIO.setup(KEY_UP_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Input with pull-up
     GPIO.setup(KEY_DOWN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Input with pull-up
     GPIO.setup(KEY_LEFT_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # Input with pull-up

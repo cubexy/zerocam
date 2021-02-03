@@ -143,8 +143,6 @@ def mode_camera():
     while back==False:
         if GPIO.input(KEY1_PIN) == 0:  # button is pressed
             stream = BytesIO()
-            # print("BUT1 pressed")
-            # disp.LCD_Clear()
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
