@@ -146,7 +146,8 @@ def mode_camera():
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
-            img.rotate(180)
+            img = img.transpose(Image.FLIP_TOP_BOTTOM)
+
             disp.LCD_ShowImage(img, 0, 0)
             sleep(1.5)
             stream.flush()
