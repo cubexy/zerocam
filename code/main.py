@@ -145,7 +145,7 @@ def mode_camera():
             stream.seek(0)
             img = Image.open(stream)
             print("Opening stream")
-            img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
+            #img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
             print("Transposed image")
             img.save("test.jpg")
             print("Saved image")
