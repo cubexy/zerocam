@@ -8,12 +8,13 @@ from io import BytesIO
 
 import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
+import PIL
 
 version = "v.0.1"
 
 setup_gpio()
 camera = PiCamera()
-camera.resolution=(128,128)
+camera.resolution=(2400,1600)
 camera.start_preview()
 
 disp = LCD_1in44.LCD()
@@ -70,8 +71,6 @@ def show_menu(width,height):
                 disp.LCD_ShowImage(image, 0, 0)
                 sleep(0.2)
                 return "WEBCAM_MODE"
-
-
 
 def mode_test(width,height):
     image = Image.new('RGB', (width, height))
@@ -134,6 +133,9 @@ def mode_test(width,height):
             draw.ellipse((70, 40, 90, 60), outline=255, fill=0)  # A button filled
         disp.LCD_ShowImage(image, 0, 0)
 
+def save_img(image)
+
+
 def mode_camera():
     # button_test(width,height)
     image_c = Image.open("splashscreen_camera.jpg")
@@ -148,7 +150,10 @@ def mode_camera():
             img = Image.open(stream)
             img = img.transpose(Image.FLIP_TOP_BOTTOM)
             img = img.transpose(Image.FLIP_LEFT_RIGHT)
-            disp.LCD_ShowImage(img, 0, 0)
+            img.save("test.jpg")
+            img_thumb = img.crop((400,0,1600,2000))
+            img_thumb = img_thumb.resize((128,128))
+            disp.LCD_ShowImage(img_thumb, 0, 0)
             sleep(1.5)
             stream.flush()
             stream.close()
