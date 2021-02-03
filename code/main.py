@@ -8,7 +8,6 @@ from io import BytesIO
 
 import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
-import PIL
 
 version = "v.0.1"
 
@@ -145,12 +144,18 @@ def mode_camera():
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
+            print("Opening stream")
             img = img.transpose(Image.FLIP_TOP_BOTTOM)
             img = img.transpose(Image.FLIP_LEFT_RIGHT)
+            print("Transposed image")
             img.save("test.jpg")
+            print("Saved image")
             img_thumb = img.crop((400,0,1600,2000))
+            print("Cropped thumbnail")
             img_thumb = img_thumb.resize((128,128))
+            print("Resized thumbnail")
             disp.LCD_ShowImage(img_thumb, 0, 0)
+            print("Showing thumbnail")
             sleep(1.5)
             stream.flush()
             stream.close()
@@ -159,13 +164,13 @@ def mode_camera():
 def mode_webinterface():
     print("WIP")
 
-try:
-    m = show_menu(128,128)
-    if m == "PHOTO_MODE":
-        mode_camera()
-    elif m == "WEBCAM_MODE":
-        mode_webinterface()
-except KeyboardInterrupt:
-    print("\nEnded Program")
-    disp.LCD_Clear()
-    camera.close()
+#try:
+m = show_menu(128,128)
+if m == "PHOTO_MODE":
+    mode_camera()
+elif m == "WEBCAM_MODE":
+    mode_webinterface()
+#except KeyboardInterrupt:
+#    print("\nEnded Program")
+#    disp.LCD_Clear()
+#    camera.close()
