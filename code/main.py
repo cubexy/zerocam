@@ -150,7 +150,7 @@ def mode_camera():
             img.save("test.jpg")
             print("Saved image")
             #print("Cropped thumbnail")
-            img_thumb = img_thumb.resize((128,128))
+            img_thumb = img.resize((128,128))
             print("Resized thumbnail")
             disp.LCD_ShowImage(img_thumb, 0, 0)
             print("Showing thumbnail")
