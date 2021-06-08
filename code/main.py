@@ -13,7 +13,7 @@ version = "v.0.1"
 
 setup_gpio()
 camera = PiCamera()
-camera.resolution=(2400,1600)
+camera.resolution=(128,128)
 camera.start_preview()
 
 disp = LCD_1in44.LCD()
@@ -145,7 +145,7 @@ def mode_camera():
             stream.seek(0)
             img = Image.open(stream)
             print("Opening stream")
-            #img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
+            img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
             print("Transposed image")
             img.save("test.jpg")
             print("Saved image")
