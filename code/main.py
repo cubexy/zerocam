@@ -6,6 +6,7 @@ from io import BytesIO
 from datetime import datetime
 
 import RPi.GPIO as GPIO
+from gpiozero import CPUTemperature
 from picamera import PiCamera
 # Linux-only repos -> fail when trying to install on Windows
 
@@ -42,6 +43,9 @@ height = 128
 tprint("Activating camera")
 sleep(2)
 tprint("Sleep time exited")
+
+cpu = CPUTemperature()
+tprint("Current CPU temp: " + cpu.temperature + "°C")
 
 def show_menu(width,height):
     image = Image.open("splashscreen.jpg")
