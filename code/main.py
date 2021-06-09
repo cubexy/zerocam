@@ -3,6 +3,7 @@ import LCD_1in44
 from var import *
 from time import sleep
 from io import BytesIO
+from datetime import datetime
 
 import RPi.GPIO as GPIO
 from picamera import PiCamera
@@ -11,6 +12,11 @@ from picamera import PiCamera
 import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 # pip install Pillow
+
+async def timestamp():
+    now = datetime.now()
+    dt_string = now.strftime('[%d.%m.%Y - %H:%M:%S] ')
+    return dt_string
 
 version = "v.0.1"
 
@@ -150,7 +156,7 @@ def mode_camera():
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
-            print("Opening stream")
+            print(timestamp()+"Opening stream")
             img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
             print("Transposed image")
             img.save("test.jpg")
