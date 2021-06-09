@@ -23,8 +23,8 @@ def tprint(str):
 
 version = "v.0.1"
 
-crx = 256
-cry = 256 # :'(
+crx = 512
+cry = 512 # :'(
 
 setup_gpio()
 camera = PiCamera()
@@ -183,7 +183,7 @@ try:
     elif m == "WEBCAM_MODE":
         mode_webinterface()
 except KeyboardInterrupt:
-    print()
-    tprint("\nEnded Program")
+    print("Ctrl+C - Interrupted Program")
+    tprint("Ended Program")
     disp.LCD_Clear()
     camera.close()
