@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import LCD_Config
 import LCD_1in44
 from var import *
