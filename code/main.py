@@ -18,6 +18,9 @@ def timestamp():
     dt_string = now.strftime('[%d.%m.%Y - %H:%M:%S] ')
     return dt_string
 
+def tprint(str):
+    print(timestamp()+str)
+
 version = "v.0.1"
 
 crx = 256
@@ -156,12 +159,11 @@ def mode_camera():
             camera.capture(stream, format='jpeg')
             stream.seek(0)
             img = Image.open(stream)
-            print(timestamp()+"Opening stream")
+            tprint("Opening stream")
             img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
             print("Transposed image")
             img.save("test.jpg")
             print("Saved image")
-            #print("Cropped thumbnail")
             img_thumb = img.resize((128,128))
             print("Resized thumbnail")
             disp.LCD_ShowImage(img_thumb, 0, 0)
