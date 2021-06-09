@@ -183,6 +183,7 @@ try:
     elif m == "WEBCAM_MODE":
         mode_webinterface()
 except KeyboardInterrupt:
+    print()
     tprint("\nEnded Program")
     disp.LCD_Clear()
     camera.close()
