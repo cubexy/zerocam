@@ -13,7 +13,7 @@ import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
 # pip install Pillow
 
-async def timestamp():
+def timestamp():
     now = datetime.now()
     dt_string = now.strftime('[%d.%m.%Y - %H:%M:%S] ')
     return dt_string
