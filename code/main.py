@@ -25,8 +25,11 @@ def tprint(str):
 
 version = "v.0.1"
 
-crx = 2400
-cry = 1600 # :'(
+crx = 240
+cry = 160 # :'(
+
+# Working res:
+# Squared: UP TO 1024x
 
 setup_gpio()
 camera = PiCamera()
@@ -168,7 +171,7 @@ def mode_camera():
             stream.seek(0)
             img = Image.open(stream)
             tprint("Transposing image")
-            #img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
+            img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
             tprint("Saving image")
             img.save("test.jpg")
             tprint("Resizing thumbnail")
