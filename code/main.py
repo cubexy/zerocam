@@ -25,8 +25,8 @@ def tprint(str):
 
 version = "v.0.1"
 
-crx = 1024
-cry = 1024 # :'(
+crx = 2048
+cry = 2048 # :'(
 
 setup_gpio()
 camera = PiCamera()
