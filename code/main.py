@@ -25,8 +25,8 @@ def tprint(str):
 
 version = "v.0.1"
 
-crx = 240
-cry = 160 # :'(
+crx = 1024
+cry = 1024 # :'(
 
 # Working res:
 # Squared: UP TO 1024x
@@ -175,12 +175,7 @@ def mode_camera():
             tprint("Saving image")
             img.save("test.jpg")
             tprint("Resizing thumbnail")
-            if crx>cry:
-                img_thumb = img.resize((128,128*cry/crx))
-            elif crx<cry:
-                img_thumb = img.resize((128*crx/cry,128))
-            else:
-                img_thumb = img.resize((128,128))
+            img_thumb = img.resize((128,128))
             tprint("Showing thumbnail")
             disp.LCD_ShowImage(img_thumb, 0, 0)
             exec_end = datetime.now()
