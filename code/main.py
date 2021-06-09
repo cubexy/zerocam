@@ -23,8 +23,8 @@ def tprint(str):
 
 version = "v.0.1"
 
-crx = 512
-cry = 512 # :'(
+crx = 1024
+cry = 1024 # :'(
 
 setup_gpio()
 camera = PiCamera()
@@ -155,6 +155,8 @@ def mode_camera():
     back=False
     while back==False:
         if GPIO.input(KEY2_PIN) == 0:  # button is pressed
+            exec_start = datetime.now()
+            exec_start.microsecond
             stream = BytesIO()
             camera.capture(stream, format='jpeg')
             stream.seek(0)
@@ -168,6 +170,9 @@ def mode_camera():
             tprint("Resized thumbnail")
             disp.LCD_ShowImage(img_thumb, 0, 0)
             tprint("Showing thumbnail")
+            exec_end = datetime.now()
+            exec_end.microsecond
+            tprint("Image was rendered in " + exec_end-exec_start + " ms")
             sleep(1.5)
             stream.flush()
             stream.close()
@@ -183,7 +188,7 @@ try:
     elif m == "WEBCAM_MODE":
         mode_webinterface()
 except KeyboardInterrupt:
-    print("Ctrl+C - Interrupted Program")
+    print("trl+C - Interrupted Program") # C is already there - no need here - also no timestamp needed so print() is fine
     tprint("Ended Program")
     disp.LCD_Clear()
     camera.close()
