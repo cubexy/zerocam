@@ -39,9 +39,9 @@ disp.LCD_Clear()
 width = 128
 height = 128
 
-print("Activating camera")
+tprint("Activating camera")
 sleep(2)
-print("Sleep time exited")
+tprint("Sleep time exited")
 
 def show_menu(width,height):
     image = Image.open("splashscreen.jpg")
@@ -100,49 +100,49 @@ def mode_test(width,height):
         # with canvas(device) as draw:
         if GPIO.input(KEY_UP_PIN) == 0:  # button is released
             draw.polygon([(20, 20), (30, 2), (40, 20)], outline=255, fill=0xff00)  # Up
-            print("Up")
+            tprint("Up")
         else:  # button is pressed:
             draw.polygon([(20, 20), (30, 2), (40, 20)], outline=255, fill=0)  # Up filled
 
         if GPIO.input(KEY_LEFT_PIN) == 0:  # button is released
             draw.polygon([(0, 30), (18, 21), (18, 41)], outline=255, fill=0xff00)  # left
-            print("left")
+            tprint("left")
         else:  # button is pressed:
             draw.polygon([(0, 30), (18, 21), (18, 41)], outline=255, fill=0)  # left filled
 
         if GPIO.input(KEY_RIGHT_PIN) == 0:  # button is released
             draw.polygon([(60, 30), (42, 21), (42, 41)], outline=255, fill=0xff00)  # right
-            print("right")
+            tprint("right")
         else:  # button is pressed:
             draw.polygon([(60, 30), (42, 21), (42, 41)], outline=255, fill=0)  # right filled
 
         if GPIO.input(KEY_DOWN_PIN) == 0:  # button is released
             draw.polygon([(30, 60), (40, 42), (20, 42)], outline=255, fill=0xff00)  # down
-            print("down")
+            tprint("down")
         else:  # button is pressed:
             draw.polygon([(30, 60), (40, 42), (20, 42)], outline=255, fill=0)  # down filled
 
         if GPIO.input(KEY_PRESS_PIN) == 0:  # button is released
             draw.rectangle((20, 22, 40, 40), outline=255, fill=0xff00)  # center
-            print("center")
+            tprint("center")
         else:  # button is pressed:
             draw.rectangle((20, 22, 40, 40), outline=255, fill=0)  # center filled
 
         if GPIO.input(KEY1_PIN) == 0:  # button is released
             draw.ellipse((70, 0, 90, 20), outline=255, fill=0xff00)  # A button
-            print("KEY1")
+            tprint("KEY1")
         else:  # button is pressed:
             draw.ellipse((70, 0, 90, 20), outline=255, fill=0)  # A button filled
 
         if GPIO.input(KEY2_PIN) == 0:  # button is released
             draw.ellipse((100, 20, 120, 40), outline=255, fill=0xff00)  # B button]
-            print("KEY2")
+            tprint("KEY2")
         else:  # button is pressed:
             draw.ellipse((100, 20, 120, 40), outline=255, fill=0)  # B button filled
 
         if GPIO.input(KEY3_PIN) == 0:  # button is released
             draw.ellipse((70, 40, 90, 60), outline=255, fill=0xff00)  # A button
-            print("KEY3")
+            tprint("KEY3")
         else:  # button is pressed:
             draw.ellipse((70, 40, 90, 60), outline=255, fill=0)  # A button filled
         disp.LCD_ShowImage(image, 0, 0)
@@ -161,20 +161,20 @@ def mode_camera():
             img = Image.open(stream)
             tprint("Opening stream")
             img = img.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)
-            print("Transposed image")
+            tprint("Transposed image")
             img.save("test.jpg")
-            print("Saved image")
+            tprint("Saved image")
             img_thumb = img.resize((128,128))
-            print("Resized thumbnail")
+            tprint("Resized thumbnail")
             disp.LCD_ShowImage(img_thumb, 0, 0)
-            print("Showing thumbnail")
+            tprint("Showing thumbnail")
             sleep(1.5)
             stream.flush()
             stream.close()
             disp.LCD_ShowImage(image_c, 0, 0)
 
 def mode_webinterface():
-    print("WIP")
+    tprint("WIP")
 
 try:
     m = show_menu(128,128)
@@ -183,6 +183,6 @@ try:
     elif m == "WEBCAM_MODE":
         mode_webinterface()
 except KeyboardInterrupt:
-    print("\nEnded Program")
+    tprint("\nEnded Program")
     disp.LCD_Clear()
     camera.close()
