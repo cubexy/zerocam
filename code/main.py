@@ -46,7 +46,7 @@ sleep(2)
 tprint("Sleep time exited")
 
 cpu = CPUTemperature()
-tprint("Current CPU temp: " + cpu.temperature + "°C")
+tprint("Current CPU temp: " + str(cpu.temperature) + "°C")
 
 def show_menu(width,height):
     image = Image.open("splashscreen.jpg")
