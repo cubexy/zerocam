@@ -172,7 +172,7 @@ def mode_camera():
             tprint("Showing thumbnail")
             exec_end = datetime.now()
             exec_end.microsecond
-            exec_time = str(exec_end - exec_start)
+            exec_time = str((exec_end - exec_start).microseconds)
             tprint("Image was rendered in " + exec_time + " ms")
             sleep(1.5)
             stream.flush()
