@@ -1,19 +1,25 @@
 import LCD_Config
 import LCD_1in44
 from var import *
-import RPi.GPIO as GPIO
-from picamera import PiCamera
 from time import sleep
 from io import BytesIO
 
+import RPi.GPIO as GPIO
+from picamera import PiCamera
+# Linux-only repos -> fail when trying to install on Windows
+
 import time
 from PIL import Image,ImageDraw,ImageFont,ImageColor
+# pip install Pillow
 
 version = "v.0.1"
 
+crx = 256
+cry = 256 # :'(
+
 setup_gpio()
 camera = PiCamera()
-camera.resolution=(128,128)
+camera.resolution=(crx,cry)
 camera.start_preview()
 
 disp = LCD_1in44.LCD()
