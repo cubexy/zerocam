@@ -175,7 +175,12 @@ def mode_camera():
             tprint("Saving image")
             img.save("test.jpg")
             tprint("Resizing thumbnail")
-            img_thumb = img.resize((128,128))
+            if crx>cry:
+                img_thumb = img.resize((128,128*cry/crx))
+            elif crx<cry:
+                img_thumb = img.resize((128*crx/cry,128))
+            else:
+                img_thumb = img.resize((128,128))
             tprint("Showing thumbnail")
             disp.LCD_ShowImage(img_thumb, 0, 0)
             exec_end = datetime.now()
